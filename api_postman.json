@@ -1,0 +1,765 @@
+{
+	"info": {
+		"_postman_id": "c72fa366-7da0-4b5d-a219-fb27961a6d2e",
+		"name": "FSPHP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "User Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"me"
+							]
+						},
+						"description": "Com este método você pode obter os dados base do usuário conectado via email e senha passados por headers nesta API."
+					},
+					"response": []
+				},
+				{
+					"name": "User Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "first_name",
+									"value": "Robson",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "V. Leite",
+									"type": "text"
+								},
+								{
+									"key": "genre",
+									"value": "other",
+									"description": "O gênero do usuário podendo ser male, female ou other",
+									"type": "text"
+								},
+								{
+									"key": "datebirth",
+									"value": "1986-07-01",
+									"description": "A data de nascimento no formato YYYY-MM-DD",
+									"type": "text"
+								},
+								{
+									"key": "document",
+									"value": "00953074843",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"me"
+							]
+						},
+						"description": "Método para atualizar os dados do usuário conectado."
+					},
+					"response": []
+				},
+				{
+					"name": "User Photo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"description": "Uma imagem JPG ou PNG",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/me/photo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"me",
+								"photo"
+							]
+						},
+						"description": "A photo do usuário pode ser enviada e atualizada por este método!"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invocies",
+			"item": [
+				{
+					"name": "Invoice Index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							},
+							{
+								"key": "wallet_id",
+								"value": "23",
+								"disabled": true
+							},
+							{
+								"key": "type",
+								"value": "fixed_income",
+								"disabled": true
+							},
+							{
+								"key": "status",
+								"value": "paid",
+								"disabled": true
+							},
+							{
+								"key": "page",
+								"value": "4",
+								"disabled": true
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/invoices",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"invoices"
+							]
+						},
+						"description": "Liste todos os lançamentos (faturas) do usuário conectado na API e aplique filtros e paginação."
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "wallet_id",
+									"value": "23",
+									"description": "O ID da carteira do usuário",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "3",
+									"description": "O ID da categoria deste lançamento",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Api created invoice",
+									"description": "Descrição dolanámento",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "income",
+									"description": "Tipo, pode ser income ou expense",
+									"type": "text"
+								},
+								{
+									"key": "value",
+									"value": "25000.25",
+									"description": "Valor decimal do lançamento (R$ 250 = 250.00)",
+									"type": "text"
+								},
+								{
+									"key": "due_at",
+									"value": "2019-02-15",
+									"description": "Data de vencimento no formado YYYY-MM-DD",
+									"type": "text"
+								},
+								{
+									"key": "repeat_when",
+									"value": "single",
+									"description": "Repetição do lançamento, pode ser single, enrollment ou fixed",
+									"type": "text"
+								},
+								{
+									"key": "period",
+									"value": "month",
+									"description": "Período, pode ser month ou year",
+									"type": "text"
+								},
+								{
+									"key": "enrollments",
+									"value": "1",
+									"description": "Número de parcelas entre 1 e 420",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/invoices",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"invoices"
+							]
+						},
+						"description": "Método para cadastrar um novo lançamento (fatura) na conta do usuário conectado na API."
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Read",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/invoices/94",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"invoices",
+								"94"
+							]
+						},
+						"description": "Passe o ID de um lançamento (fatura) para obter os dados detalhados do mesmo."
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "wallet_id",
+									"value": "22",
+									"description": "Id da carteira",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "2",
+									"description": "Id da categoria",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Api updated invoice",
+									"description": "Descrição do lançamento",
+									"type": "text"
+								},
+								{
+									"key": "value",
+									"value": "30000",
+									"description": "Valor decimal do lançamento (R$ 250 = 250.00)",
+									"type": "text"
+								},
+								{
+									"key": "due_day",
+									"value": "15",
+									"description": "Dia de vencimento entre 1 e 28",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "unpaid",
+									"description": "Status do lançamento que pode ser paid ou unpaid",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/invoices/94",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"invoices",
+								"94"
+							]
+						},
+						"description": "Método para atualizar um lançamento (fatura) de forma controlada e segura acompanhando os campos da APP WEB"
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/invoices/94",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"invoices",
+								"94"
+							]
+						},
+						"description": "Método para deletar uma fatura do usuário conectado na API. Também deleta todas as relações feitas por chaves no banco."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Wallets",
+			"item": [
+				{
+					"name": "Wallet Index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							},
+							{
+								"key": "free",
+								"value": "false",
+								"description": "Informe true para gratuitas ou false para carteiras premium.",
+								"disabled": true
+							},
+							{
+								"key": "page",
+								"value": "2",
+								"description": "Paginação de resultados",
+								"disabled": true
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/wallets",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wallets"
+							]
+						},
+						"description": "Liste todos as carteiras do usuário conectado na API e aplique filtros e paginação."
+					},
+					"response": []
+				},
+				{
+					"name": "Wallet Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "wallet",
+									"value": "Api created wallet",
+									"description": "O nome de sua nova carteira",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/wallets",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wallets"
+							]
+						},
+						"description": "Método para cadastrar uma nova carteira na conta do usuário conectado na API que tem assinatura ativa."
+					},
+					"response": []
+				},
+				{
+					"name": "Wallet Read",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/wallets/25",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wallets",
+								"25"
+							]
+						},
+						"description": "Passe o ID de uma carteira para obter os dados detalhados da mesma."
+					},
+					"response": []
+				},
+				{
+					"name": "Wallet Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "wallet",
+									"value": "Api updated wallet",
+									"description": "O novo nome para sua carteira",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/wallets/25",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wallets",
+								"25"
+							]
+						},
+						"description": "Método para atualizar os dados de carteiras de um usuário conectado."
+					},
+					"response": []
+				},
+				{
+					"name": "Wallet Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/wallets/25",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wallets",
+								"25"
+							]
+						},
+						"description": "Método para deletar uma carteira do usuário conectado na API. Também deleta todas as relações feitas por chaves no banco."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscription",
+			"item": [
+				{
+					"name": "Subscription Index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/subscription",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"subscription"
+							]
+						},
+						"description": "Obtenha os detalhes de assinatura do usuário conectado na API."
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "plan_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "card_number",
+									"value": "5583983765729729",
+									"type": "text"
+								},
+								{
+									"key": "card_holder_name",
+									"value": "ROBSON LEITE",
+									"type": "text"
+								},
+								{
+									"key": "card_expiration_date",
+									"value": "12/2020",
+									"type": "text"
+								},
+								{
+									"key": "card_cvv",
+									"value": "654",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/subscription",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"subscription"
+							]
+						},
+						"description": "Método para assinar um plano PRO na conta do usuário conectado na API que NÃO tem assinatura ativa."
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription Plans Read",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/subscription/plans",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"subscription",
+								"plans"
+							]
+						},
+						"description": "Para assinatura é preciso ter conhecimento sobre os planos, aqui você pode obter esse conhecimento com apenas uma requisição."
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "email",
+								"value": "{{email}}"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "plan_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "card_number",
+									"value": "4024007190034479",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "card_holder_name",
+									"value": "ROBSON LEITE",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "card_expiration_date",
+									"value": "12/2020",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "card_cvv",
+									"value": "654",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/subscription",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"subscription"
+							]
+						},
+						"description": "Método para atualizar o plano do usuário conectado.Você pode mudar de plano informando plan_id ou atualizar o cartão informando todos os dados do mesmo.\n\nSe a assinatura estiver com status past_due e você atualizar o cartão, uma nova tentativa de cobrança será feita."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
